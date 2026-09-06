@@ -243,7 +243,7 @@ export default function SwipeCards({ allPhysicalItems, statusMap, onStatusChange
   }
 
   return (
-    <div className="flex flex-col items-center px-4 py-4 w-full max-w-md mx-auto">
+    <div className="flex flex-col items-center px-2 sm:px-4 py-3 sm:py-4 w-full max-w-full md:max-w-md mx-auto">
       {/* Counters */}
       <div className="flex items-center gap-3 mb-4">
         <span className="bg-purple-100 text-purple-700 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full">
@@ -271,7 +271,7 @@ export default function SwipeCards({ allPhysicalItems, statusMap, onStatusChange
       </div>
 
       {/* Card stack */}
-      <div className="relative w-full max-w-sm mx-auto" style={{ height: '460px' }}>
+      <div className="relative w-full max-w-full sm:max-w-sm mx-auto" style={{ height: '460px' }}>
         {/* Background card (next item) */}
         {nextItem && (
           <div

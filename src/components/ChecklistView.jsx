@@ -54,7 +54,7 @@ export default function ChecklistView({ categories, statusMap, onStatusChange, a
   }
 
   return (
-    <div className="px-4 py-4 max-w-2xl mx-auto w-full">
+    <div className="px-2 sm:px-4 py-3 sm:py-4 w-full max-w-full md:max-w-2xl mx-auto">
       {/* Quick stats chips */}
       <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
         <div className="flex-shrink-0 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full">

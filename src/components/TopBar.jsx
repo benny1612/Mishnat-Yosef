@@ -8,8 +8,8 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
   return (
     <div className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100 w-full overflow-hidden">
       {/* Main header row */}
-      <div className="bg-gradient-to-l from-green-800 to-emerald-700 text-white px-4 py-3.5">
-        <div className="flex items-center justify-between gap-3 max-w-2xl mx-auto">
+      <div className="bg-gradient-to-l from-green-800 to-emerald-700 text-white px-3 sm:px-4 py-3.5">
+        <div className="flex items-center justify-between gap-3 w-full max-w-full md:max-w-2xl mx-auto">
           {/* Title & address */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-0.5">
@@ -44,7 +44,7 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
 
         {/* Hours & date row */}
         {(orderMeta?.times || collectionDate) && (
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-2 max-w-2xl mx-auto text-xs sm:text-sm font-medium text-green-100">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-2 w-full max-w-full md:max-w-2xl mx-auto text-xs sm:text-sm font-medium text-green-100">
             {collectionDate && (
               <span className="flex items-center gap-1 truncate">
                 <span>📅</span>{collectionDate}
@@ -65,7 +65,7 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
       </div>
 
       {/* Progress bar + mode toggle row */}
-      <div className="bg-white px-4 py-3 max-w-2xl mx-auto">
+      <div className="bg-white px-3 sm:px-4 py-3 w-full max-w-full md:max-w-2xl mx-auto">
         <div className="flex items-center gap-3">
           {/* Progress section */}
           <div className="flex-1 min-w-0">

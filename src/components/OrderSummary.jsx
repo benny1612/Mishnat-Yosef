@@ -15,7 +15,7 @@ export default function OrderSummary({ billingItems, orderMeta, allPhysicalItems
     .reduce((s, i) => s + i.lineTotal, 0);
 
   return (
-    <div className="px-4 mb-8 max-w-2xl mx-auto w-full">
+    <div className="px-2 sm:px-4 mb-8 w-full max-w-full md:max-w-2xl mx-auto">
       {/* Billing / operational fees */}
       {billingItems.length > 0 && (
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-4">
