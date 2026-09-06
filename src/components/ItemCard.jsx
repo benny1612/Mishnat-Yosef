@@ -74,7 +74,7 @@ function ImageModal({ item, onClose }) {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.7, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-          className="bg-white rounded-3xl p-5 max-w-sm w-full shadow-2xl"
+          className="relative bg-white rounded-3xl p-5 w-[90vw] max-w-sm max-h-[85dvh] overflow-y-auto shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close button */}

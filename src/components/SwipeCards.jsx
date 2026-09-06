@@ -44,8 +44,8 @@ function SwipeCard({ item, onCollect, onSkip, onMissing, zIndex }) {
 
   return (
     <motion.div
-      className="absolute inset-0 rounded-3xl overflow-hidden card-shadow"
-      style={{ x, y, rotate, backgroundColor: bgColor, zIndex, cursor: 'grab' }}
+      className="absolute inset-0 rounded-3xl overflow-hidden card-shadow touch-none select-none"
+      style={{ x, y, rotate, backgroundColor: bgColor, zIndex, cursor: 'grab', touchAction: 'none' }}
       drag
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       dragElastic={0.8}
@@ -88,22 +88,22 @@ function SwipeCard({ item, onCollect, onSkip, onMissing, zIndex }) {
       </motion.div>
 
       {/* Card content */}
-      <div className="flex flex-col h-full p-4 sm:p-5 select-none">
+      <div className="flex flex-col h-full p-3.5 sm:p-5 select-none overflow-hidden">
         {/* Category badge */}
-        <div className="flex justify-center mb-3">
-          <span className="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm max-w-full truncate">
+        <div className="flex justify-center mb-2 flex-shrink-0">
+          <span className="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full shadow-sm max-w-full truncate">
             <span>{item.categoryIcon}</span>
             <span className="truncate">{item.categoryLabel}</span>
           </span>
         </div>
 
-        {/* Image */}
-        <div className="flex-1 flex items-center justify-center mb-3 overflow-hidden">
+        {/* Image with min-h-0 for responsive scaling on small screens */}
+        <div className="flex-1 min-h-0 flex items-center justify-center my-1 sm:my-2 overflow-hidden">
           <ProductImage item={item} size="lg" />
         </div>
 
         {/* Details */}
-        <div className="bg-gray-50 rounded-2xl p-4 space-y-2">
+        <div className="bg-gray-50 rounded-2xl p-3 sm:p-4 space-y-1.5 flex-shrink-0">
           <h3 className="font-bold text-gray-900 text-base sm:text-lg leading-snug text-center line-clamp-2">
             {item.name}
           </h3>
@@ -120,14 +120,14 @@ function SwipeCard({ item, onCollect, onSkip, onMissing, zIndex }) {
               <p className="text-xs text-gray-500">כמות</p>
               <p className="font-black text-xl sm:text-2xl text-gray-900">{item.amount}</p>
             </div>
-            <div className="w-px h-10 bg-gray-200" />
+            <div className="w-px h-8 sm:h-10 bg-gray-200" />
             <div className="text-center">
               <p className="text-xs text-gray-500">מחיר</p>
               <p className="font-bold text-base sm:text-xl text-gray-800">{formatPrice(item.price1)}</p>
             </div>
             {item.amount > 1 && (
               <>
-                <div className="w-px h-10 bg-gray-200" />
+                <div className="w-px h-8 sm:h-10 bg-gray-200" />
                 <div className="text-center">
                   <p className="text-xs text-gray-500">סה״כ</p>
                   <p className="font-bold text-base sm:text-xl text-green-700">{formatPrice(item.lineTotal)}</p>
