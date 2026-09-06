@@ -38,20 +38,20 @@ export default function CategorySection({ category, statusMap, onStatusChange, m
     >
       {/* Category header — left side clickable to collapse, right side has mark-all button */}
       <div
-        className={`flex items-center justify-between px-4 py-3 border-b-2 ${colors.header} transition-colors duration-200`}
+        className={`flex items-center justify-between px-4 py-3.5 border-b-2 ${colors.header} transition-colors duration-200`}
       >
         {/* Left: clickable collapse area */}
         <button
           id={`category-header-${category.classId}`}
           onClick={() => setCollapsed(!collapsed)}
-          className="flex items-center gap-2.5 flex-1 text-right"
+          className="flex items-center gap-3 flex-1 text-right"
         >
-          <span className={`w-9 h-9 rounded-xl flex items-center justify-center text-xl ${colors.icon} shadow-sm flex-shrink-0`}>
+          <span className={`w-10 h-10 rounded-2xl flex items-center justify-center text-2xl ${colors.icon} shadow-sm flex-shrink-0`}>
             {category.icon}
           </span>
           <div className="text-right">
-            <h2 className="font-bold text-gray-800 text-sm leading-tight">{category.label}</h2>
-            <p className="text-xs text-gray-500">
+            <h2 className="font-extrabold text-gray-900 text-lg sm:text-xl leading-tight">{category.label}</h2>
+            <p className="text-xs sm:text-sm text-gray-600 font-medium">
               {collectedCnt} מתוך {totalItems} נאספו
               {missingCnt > 0 && ` • ${missingCnt} חסרים`}
             </p>
@@ -66,20 +66,20 @@ export default function CategorySection({ category, statusMap, onStatusChange, m
             whileTap={{ scale: 0.9 }}
             onClick={handleMarkAll}
             title={allCollected ? 'בטל סימון כולם' : 'סמן כולם כנאספו'}
-            className={`text-white text-xs font-bold px-2.5 py-1.5 rounded-lg transition-all duration-200 shadow-sm flex items-center gap-1 ${
+            className={`text-white text-xs sm:text-sm font-extrabold px-3 py-2 rounded-xl transition-all duration-200 shadow-sm flex items-center gap-1.5 ${
               allCollected
                 ? 'bg-green-500 opacity-90'
-                : `${colors.btn} opacity-80`
+                : `${colors.btn} opacity-90`
             }`}
           >
             {allCollected ? (
-              <><span>↺</span><span className="hidden sm:inline">בטל</span></>
+              <><span>↺</span><span>בטל</span></>
             ) : (
-              <><span>✓✓</span><span className="hidden sm:inline">אסוף הכל </span></>
+              <><span>✓✓</span><span>אסוף הכל</span></>
             )}
           </motion.button>
 
-          <div className={`${colors.count} text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0`}>
+          <div className={`${colors.count} text-white text-xs sm:text-sm font-black w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm`}>
             {totalItems}
           </div>
           <button

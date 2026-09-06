@@ -19,9 +19,9 @@ function ProductImage({ item, size = 'md', onClick }) {
   ].filter(Boolean);
 
   const currentSrc = srcs[phase];
-  const sizeClass   = size === 'sm' ? 'w-10 h-10 sm:w-12 sm:h-12' : size === 'lg' ? 'w-40 h-40 sm:w-48 sm:h-48' : 'w-14 h-14 sm:w-16 sm:h-16';
-  const radiusClass = size === 'lg' ? 'rounded-2xl' : 'rounded-xl';
-  const minW        = size === 'lg' ? 160 : size === 'sm' ? 40 : 56;
+  const sizeClass   = size === 'sm' ? 'w-12 h-12' : size === 'lg' ? 'w-52 h-52 sm:w-60 sm:h-60' : 'w-20 h-20 sm:w-24 sm:h-24';
+  const radiusClass = size === 'lg' ? 'rounded-3xl' : 'rounded-2xl';
+  const minW        = size === 'lg' ? 208 : size === 'sm' ? 48 : 80;
 
   const handleError = () => {
     if (phase < srcs.length - 1) {
@@ -37,7 +37,7 @@ function ProductImage({ item, size = 'md', onClick }) {
         className={`${sizeClass} ${radiusClass} bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center flex-shrink-0`}
         style={{ minWidth: minW }}
       >
-        <span className={size === 'lg' ? 'text-5xl sm:text-6xl' : 'text-xl sm:text-2xl'}>🛍️</span>
+        <span className={size === 'lg' ? 'text-6xl' : 'text-2xl font-bold'}>🛍️</span>
       </div>
     );
   }
@@ -167,33 +167,33 @@ export default function ItemCard({ item, status, onStatusChange, modalState, set
 
         {/* Product info */}
         <div className="flex-1 min-w-0 pr-1">
-          <p className={`font-bold text-gray-900 leading-tight text-xs sm:text-sm break-words ${
-            status === 'collected' ? 'line-through text-gray-500' : ''
+          <p className={`font-extrabold text-gray-900 leading-snug text-base sm:text-lg break-words ${
+            status === 'collected' ? 'line-through text-gray-400' : ''
           }`}>
             {item.name}
           </p>
           {item.description && (
-            <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5 truncate">{item.description}</p>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1 truncate">{item.description}</p>
           )}
           {item.unitsDisplay && (
-            <p className="text-[11px] sm:text-xs text-blue-600 font-medium mt-0.5">{item.unitsDisplay}</p>
+            <p className="text-xs sm:text-sm text-blue-600 font-semibold mt-1">{item.unitsDisplay}</p>
           )}
 
           {/* Amount & price */}
-          <div className="flex items-center gap-1.5 sm:gap-2 mt-1 flex-wrap">
-            <span className="bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 rounded-md sm:rounded-lg">
+          <div className="flex items-center gap-2 mt-2 flex-wrap">
+            <span className="bg-blue-100 text-blue-900 text-xs sm:text-sm font-extrabold px-2.5 py-1 rounded-lg">
               כמות: {item.amount}
             </span>
-            <span className="text-[11px] sm:text-xs text-gray-600 font-medium">
+            <span className="text-xs sm:text-sm text-gray-700 font-bold">
               {formatPrice(item.price1)}
             </span>
             {item.amount > 1 && (
-              <span className="text-[11px] sm:text-xs font-bold text-gray-800">
+              <span className="text-xs sm:text-sm font-extrabold text-green-700">
                 סה״כ: {formatPrice(item.lineTotal)}
               </span>
             )}
             {item.madeInIsrael && (
-              <span className="text-[10px] bg-blue-50 text-blue-700 px-1 py-0.5 rounded-full border border-blue-200">
+              <span className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200">
                 🇮🇱
               </span>
             )}
@@ -201,14 +201,14 @@ export default function ItemCard({ item, status, onStatusChange, modalState, set
         </div>
 
         {/* Action buttons */}
-        <div className="flex flex-col gap-1 sm:gap-1.5 flex-shrink-0">
+        <div className="flex flex-col gap-2 flex-shrink-0">
           {/* Collect button (V) */}
           <motion.button
             id={`collect-btn-${item.id}`}
             whileTap={{ scale: 0.82 }}
             onClick={handleCollect}
             title="סמן כנאסף"
-            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center transition-all duration-200 shadow-sm ${
+            className={`w-12 h-12 sm:w-13 sm:h-13 rounded-2xl font-black text-2xl flex items-center justify-center transition-all duration-200 shadow-md ${
               status === 'collected'
                 ? 'bg-green-500 text-white shadow-green-200 pulse-green'
                 : 'bg-green-100 text-green-700 hover:bg-green-500 hover:text-white'
@@ -223,7 +223,7 @@ export default function ItemCard({ item, status, onStatusChange, modalState, set
             whileTap={{ scale: 0.82 }}
             onClick={handleMissing}
             title="סמן כחסר"
-            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center transition-all duration-200 shadow-sm ${
+            className={`w-12 h-12 sm:w-13 sm:h-13 rounded-2xl font-black text-2xl flex items-center justify-center transition-all duration-200 shadow-md ${
               status === 'missing'
                 ? 'bg-red-500 text-white shadow-red-200 pulse-red'
                 : 'bg-red-100 text-red-700 hover:bg-red-500 hover:text-white'

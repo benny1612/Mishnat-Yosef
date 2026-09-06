@@ -8,23 +8,23 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
   return (
     <div className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100 w-full overflow-hidden">
       {/* Main header row */}
-      <div className="bg-gradient-to-l from-green-800 to-emerald-700 text-white px-3 sm:px-4 py-2.5 sm:py-3">
-        <div className="flex items-center justify-between gap-2 sm:gap-3 max-w-2xl mx-auto">
+      <div className="bg-gradient-to-l from-green-800 to-emerald-700 text-white px-4 py-3.5">
+        <div className="flex items-center justify-between gap-3 max-w-2xl mx-auto">
           {/* Title & address */}
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5">
-              <span className="text-lg sm:text-xl flex-shrink-0">🛒</span>
-              <h1 className="font-bold text-sm sm:text-base leading-tight truncate">{orderMeta?.name || 'טוען...'}</h1>
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="text-2xl flex-shrink-0">🛒</span>
+              <h1 className="font-extrabold text-lg sm:text-xl leading-tight truncate">{orderMeta?.name || 'טוען...'}</h1>
             </div>
             {orderMeta?.street && (
-              <p className="text-green-200 text-[11px] sm:text-xs truncate">
+              <p className="text-green-100 text-xs sm:text-sm font-medium truncate">
                 📍 {orderMeta.street}{orderMeta.city ? `, ${orderMeta.city}` : ''}
               </p>
             )}
           </div>
 
           {/* User & Logout */}
-          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2 flex-shrink-0">
             {userName && (
               <span className="hidden sm:block text-green-200 text-xs font-medium truncate max-w-[100px]">
                 {userName}
@@ -33,7 +33,7 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
             <button
               id="logout-btn"
               onClick={onLogout}
-              className="bg-white/15 hover:bg-white/25 text-white text-[11px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg transition-all duration-200 border border-white/20 flex items-center gap-1"
+              className="bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl transition-all duration-200 border border-white/20 flex items-center gap-1.5"
               title="התנתקות"
             >
               <span>יציאה</span>
@@ -44,19 +44,19 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
 
         {/* Hours & date row */}
         {(orderMeta?.times || collectionDate) && (
-          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 mt-1 sm:mt-1.5 max-w-2xl mx-auto text-[11px] sm:text-xs">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-2 max-w-2xl mx-auto text-xs sm:text-sm font-medium text-green-100">
             {collectionDate && (
-              <span className="text-green-100 flex items-center gap-1 truncate">
+              <span className="flex items-center gap-1 truncate">
                 <span>📅</span>{collectionDate}
               </span>
             )}
             {orderMeta?.menStart && (
-              <span className="text-green-100 flex items-center gap-1 whitespace-nowrap">
+              <span className="flex items-center gap-1 whitespace-nowrap">
                 <span>👨</span>גברים: {orderMeta.menStart.slice(0,5)}–{orderMeta.menEnd.slice(0,5)}
               </span>
             )}
             {orderMeta?.womenStart && (
-              <span className="text-green-100 flex items-center gap-1 whitespace-nowrap">
+              <span className="flex items-center gap-1 whitespace-nowrap">
                 <span>👩</span>נשים: {orderMeta.womenStart.slice(0,5)}–{orderMeta.womenEnd.slice(0,5)}
               </span>
             )}
@@ -65,26 +65,26 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
       </div>
 
       {/* Progress bar + mode toggle row */}
-      <div className="bg-white px-3 sm:px-4 py-2 sm:py-2.5 max-w-2xl mx-auto">
-        <div className="flex items-center gap-2.5 sm:gap-3">
+      <div className="bg-white px-4 py-3 max-w-2xl mx-auto">
+        <div className="flex items-center gap-3">
           {/* Progress section */}
           <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-1 text-[11px] sm:text-xs">
-              <div className="flex items-center gap-1.5 truncate">
-                <span className="font-bold text-gray-700">
+            <div className="flex items-center justify-between mb-1.5 text-xs sm:text-sm">
+              <div className="flex items-center gap-2 truncate">
+                <span className="font-black text-gray-800 text-sm sm:text-base">
                   {stats.collected} / {stats.total}
                 </span>
-                <span className="text-gray-500">נאספו</span>
+                <span className="text-gray-600 font-semibold">נאספו</span>
                 {stats.missing > 0 && (
-                  <span className="bg-red-100 text-red-700 font-semibold px-1.5 py-0.5 rounded-full text-[10px] sm:text-xs whitespace-nowrap">
+                  <span className="bg-red-100 text-red-700 font-bold px-2 py-0.5 rounded-full text-xs whitespace-nowrap">
                     {stats.missing} חסרים
                   </span>
                 )}
               </div>
-              <span className="font-bold text-green-700 ml-1">{stats.percent}%</span>
+              <span className="font-extrabold text-green-700 text-sm sm:text-base ml-1">{stats.percent}%</span>
             </div>
             {/* Progress bar */}
-            <div className="relative h-2 sm:h-2.5 bg-gray-100 rounded-full overflow-hidden">
+            <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden shadow-inner">
               {/* Collected (green) */}
               <motion.div
                 className="absolute top-0 right-0 h-full bg-gradient-to-l from-green-500 to-emerald-400 rounded-full progress-shimmer"
@@ -110,14 +110,14 @@ export default function TopBar({ orderMeta, allPhysicalItems, statusMap, viewMod
             id="mode-toggle-btn"
             onClick={onToggleView}
             title={viewMode === 'list' ? 'עבור למצב סוויפ' : 'עבור למצב רשימה'}
-            className={`flex-shrink-0 flex items-center gap-1 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl font-bold text-xs transition-all duration-300 shadow-sm border ${
+            className={`flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all duration-300 shadow-sm border ${
               viewMode === 'swipe'
                 ? 'bg-purple-600 text-white border-purple-500 shadow-purple-200'
-                : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200'
+                : 'bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200'
             }`}
           >
-            <span className="text-sm sm:text-base">{viewMode === 'swipe' ? '📋' : '🃏'}</span>
-            <span className="text-[11px] sm:text-xs">{viewMode === 'swipe' ? 'רשימה' : 'סוויפ'}</span>
+            <span className="text-base sm:text-lg">{viewMode === 'swipe' ? '📋' : '🃏'}</span>
+            <span>{viewMode === 'swipe' ? 'רשימה' : 'סוויפ'}</span>
           </button>
         </div>
       </div>
