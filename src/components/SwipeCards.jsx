@@ -88,55 +88,55 @@ function SwipeCard({ item, onCollect, onSkip, onMissing, zIndex }) {
       </motion.div>
 
       {/* Card content */}
-      <div className="flex flex-col h-full p-5 select-none">
+      <div className="flex flex-col h-full p-3.5 sm:p-5 select-none">
         {/* Category badge */}
-        <div className="flex justify-center mb-3">
-          <span className="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+        <div className="flex justify-center mb-2 sm:mb-3">
+          <span className="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm max-w-full truncate">
             <span>{item.categoryIcon}</span>
-            <span>{item.categoryLabel}</span>
+            <span className="truncate">{item.categoryLabel}</span>
           </span>
         </div>
 
         {/* Image */}
-        <div className="flex-1 flex items-center justify-center mb-3">
+        <div className="flex-1 flex items-center justify-center mb-2 sm:mb-3 overflow-hidden">
           <ProductImage item={item} size="lg" />
         </div>
 
         {/* Details */}
-        <div className="bg-gray-50 rounded-2xl p-4 space-y-2">
-          <h3 className="font-bold text-gray-900 text-lg leading-snug text-center">
+        <div className="bg-gray-50 rounded-2xl p-3 sm:p-4 space-y-1.5 sm:space-y-2">
+          <h3 className="font-bold text-gray-900 text-base sm:text-lg leading-snug text-center line-clamp-2">
             {item.name}
           </h3>
           {item.description && (
-            <p className="text-sm text-gray-500 text-center">{item.description}</p>
+            <p className="text-xs sm:text-sm text-gray-500 text-center truncate">{item.description}</p>
           )}
           {item.unitsDisplay && (
-            <p className="text-sm text-blue-600 font-semibold text-center">{item.unitsDisplay}</p>
+            <p className="text-xs sm:text-sm text-blue-600 font-semibold text-center">{item.unitsDisplay}</p>
           )}
 
           {/* Price row */}
-          <div className="flex items-center justify-center gap-4 pt-1">
+          <div className="flex items-center justify-center gap-2 sm:gap-4 pt-1">
             <div className="text-center">
-              <p className="text-xs text-gray-500">כמות</p>
-              <p className="font-black text-2xl text-gray-900">{item.amount}</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">כמות</p>
+              <p className="font-black text-xl sm:text-2xl text-gray-900">{item.amount}</p>
             </div>
-            <div className="w-px h-10 bg-gray-200" />
+            <div className="w-px h-8 sm:h-10 bg-gray-200" />
             <div className="text-center">
-              <p className="text-xs text-gray-500">מחיר</p>
-              <p className="font-bold text-xl text-gray-800">{formatPrice(item.price1)}</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">מחיר</p>
+              <p className="font-bold text-base sm:text-xl text-gray-800">{formatPrice(item.price1)}</p>
             </div>
             {item.amount > 1 && (
               <>
-                <div className="w-px h-10 bg-gray-200" />
+                <div className="w-px h-8 sm:h-10 bg-gray-200" />
                 <div className="text-center">
-                  <p className="text-xs text-gray-500">סה״כ</p>
-                  <p className="font-bold text-xl text-green-700">{formatPrice(item.lineTotal)}</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500">סה״כ</p>
+                  <p className="font-bold text-base sm:text-xl text-green-700">{formatPrice(item.lineTotal)}</p>
                 </div>
               </>
             )}
           </div>
           {item.madeInIsrael && (
-            <p className="text-xs text-center text-blue-600 font-medium">🇮🇱 תוצרת ישראל</p>
+            <p className="text-[10px] sm:text-xs text-center text-blue-600 font-medium">🇮🇱 תוצרת ישראל</p>
           )}
         </div>
       </div>
@@ -243,24 +243,24 @@ export default function SwipeCards({ allPhysicalItems, statusMap, onStatusChange
   }
 
   return (
-    <div className="flex flex-col items-center px-4 py-4 max-w-sm mx-auto">
+    <div className="flex flex-col items-center px-3 sm:px-4 py-3 sm:py-4 w-full max-w-sm mx-auto overflow-hidden">
       {/* Counters */}
-      <div className="flex items-center gap-3 mb-4">
-        <span className="bg-purple-100 text-purple-700 text-sm font-bold px-3 py-1.5 rounded-full">
+      <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+        <span className="bg-purple-100 text-purple-700 text-xs sm:text-sm font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full">
           🃏 {queue.length} בתור
         </span>
-        <span className="bg-green-100 text-green-700 text-sm font-bold px-3 py-1.5 rounded-full">
+        <span className="bg-green-100 text-green-700 text-xs sm:text-sm font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full">
           ✓ {collectedCount} נאספו
         </span>
       </div>
 
       {/* Swipe direction hints */}
-      <div className="flex items-center justify-between w-full mb-2 px-2">
+      <div className="flex items-center justify-between w-full mb-2 px-1">
         <div className="flex items-center gap-1 text-orange-400 text-xs font-semibold">
           <span className="text-base">←</span><span>דלג</span>
         </div>
         <div className="flex flex-col items-center gap-0.5">
-          <p className="text-gray-400 text-xs">גרור או לחץ</p>
+          <p className="text-gray-400 text-[10px] sm:text-xs">גרור או לחץ</p>
           <div className="flex items-center gap-1 text-red-400 text-xs font-semibold">
             <span className="text-base">↓</span><span>חסר</span>
           </div>
@@ -271,7 +271,7 @@ export default function SwipeCards({ allPhysicalItems, statusMap, onStatusChange
       </div>
 
       {/* Card stack */}
-      <div className="relative w-full" style={{ height: '440px' }}>
+      <div className="relative w-full max-w-[340px] sm:max-w-none mx-auto" style={{ height: '430px' }}>
         {/* Background card (next item) */}
         {nextItem && (
           <div

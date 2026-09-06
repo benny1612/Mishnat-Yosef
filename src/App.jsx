@@ -142,7 +142,7 @@ export default function App() {
 
   // ── Main App Render ───────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden" dir="rtl">
       {/* Sticky top bar */}
       <TopBar
         orderMeta={orderMeta}
